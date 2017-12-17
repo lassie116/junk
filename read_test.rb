@@ -3,17 +3,26 @@ def main
   filepath = (ARGV.shift || "1G.dat")
   sum = 0
   dict = {}
+=begin NG
+  File.readlines(filepath).each do |line|
+    p line
+  end
+=end
+  target = (ARGV.shift || 1000000).to_i
+  File.foreach(filepath) do |line|
+    if target == 0
+      puts line.chomp
+      break
+    end
+    target -= 1
+    # p line
+  end
+=begin
   open(filepath,"r") do |f|
     f.each_line do |line|
-      sum += line.size
-=begin
-      address, mode = line.chomp.split(" ")
-      a = address.to_i
-      dict[a] ||= []
-      dict[a] << mode
-=end
     end
   end
+=end
   p sum
 end
 

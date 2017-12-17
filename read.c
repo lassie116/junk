@@ -2,9 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BUFFSIZE 256
+#define BUFFSIZE 32
+#define UNUSED_VARIABLE(x) (void)(x)
 
-int main(int argc,char *argv[]){
+int main(int argc, char *argv[]){
+  UNUSED_VARIABLE(argc);
+  UNUSED_VARIABLE(argv);
+
   char buff[BUFFSIZE];
   char filepath[] = "./1G.dat";
   FILE *fp;
@@ -13,11 +17,14 @@ int main(int argc,char *argv[]){
     printf("%s can not open\n",filepath);
     exit(EXIT_FAILURE);
   }
-  unsigned long sum = 0;
+  unsigned long line = 0;
+  // unsigned long sum = 0;
 
-  while( fgets(buff, BUFFSIZE, fp) != NULL){
-    sum += strlen(buff);
+  while(fgets(buff, BUFFSIZE, fp) != NULL){
+    // line += 1;
+    // sum += strlen(buff);
   }
-  printf("%ld bytes read\n",sum);
+  // printf("%ld bytes read\n",sum);
+  printf("%ld lines read\n",line);
   return 0;
 }
