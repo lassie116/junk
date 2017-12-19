@@ -8,9 +8,14 @@
 int main(int argc, char *argv[]){
   UNUSED_VARIABLE(argc);
   UNUSED_VARIABLE(argv);
+  char *filepath = "./1G.dat";
 
   char buff[BUFFSIZE];
-  char filepath[] = "./1G.dat";
+  if (argc > 1) {
+    filepath = argv[1];
+  }
+  printf("filepath is %s\n",filepath);
+
   FILE *fp;
 
   if ((fp = fopen(filepath, "r")) == NULL) {

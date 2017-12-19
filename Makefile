@@ -1,5 +1,5 @@
 CC := gcc
-CFLAGS := -Wall -Wextra # -O3
+CFLAGS := -Wall -Wextra -march=native # -O3
 
 read :
 
